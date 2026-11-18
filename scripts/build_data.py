@@ -1,4 +1,4 @@
-"""Build the local Repentance 1.7.9b dataset from preserved public snapshots."""
+"""Build the local Repentance+ dataset from preserved game and EID snapshots."""
 import json
 import re
 from pathlib import Path
@@ -6,6 +6,8 @@ from xml.etree import ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 RAW = ROOT / 'data/raw'
+VERSION = 'repentance-plus-1.9.7.17-demo-1'
+GAME_VERSION = '忏悔+ 1.9.7.17'
 POOLS = {'treasure':'宝箱房','shop':'商店','boss':'头目房','devil':'恶魔房','angel':'天使房','secret':'隐藏房','library':'图书馆','shellGame':'贝壳游戏','goldenChest':'金箱子','redChest':'红箱子','beggar':'乞丐','demonBeggar':'恶魔乞丐','curse':'诅咒房','keyMaster':'钥匙大师','batteryBum':'电池乞丐','momsChest':'妈妈的箱子','craneGame':'夹娃娃机','ultraSecret':'究极隐藏房','bombBum':'炸弹乞丐','planetarium':'星象房','oldChest':'旧箱子','babyShop':'宝宝商店','woodenChest':'木箱子','rottenBeggar':'腐烂乞丐'}
 TAGS = {'guppy':'嗝屁猫','book':'书本','mom':'妈妈','mushroom':'蘑菇','syringe':'针筒','fly':'苍蝇','baby':'宝宝','angel':'天使','devil':'恶魔','bob':'鲍勃','spider':'蜘蛛','poop':'便便','food':'食物','tech':'科技','battery':'电池','dead':'死亡','stars':'星星','quest':'任务'}
 ALIASES = {int(i): aliases for i, aliases in json.loads((ROOT/'data/aliases.json').read_text()).items()}
@@ -16,14 +18,19 @@ def names():
 
 def descriptions():
     result = {}
-    for filename in ['descriptions_base_zh.lua','descriptions_zh.lua']:
+    sections = [
+        ('descriptions_base_zh.lua', 'EID.descriptions[languageCode].collectibles={'),
+        ('descriptions_zh.lua', 'local repCollectibles={'),
+        ('descriptions_repplus_zh.lua', 'local collectibles = {'),
+    ]
+    for filename, marker in sections:
         text = (RAW / filename).read_text()
         # Collectibles are the first section. Other sections also use numeric IDs.
-        if filename == 'descriptions_base_zh.lua':
-            text = text.split('EID.descriptions[languageCode].collectibles={',1)[1].split('\n}',1)[0]
-        else:
-            text = text.split('local repCollectibles={',1)[1].split('\n}',1)[0]
-        for i,desc in re.findall(r'\{"(\d+)",\s*"[^"\n]*",\s*"((?:\\.|[^"\\])*)"\}',text):
+        text = text.split(marker,1)[1].split('\n}',1)[0]
+        entries = re.findall(r'\{\s*"(\d+)",\s*"[^"\n]*",\s*"((?:\\.|[^"\\])*)"\s*\}',text)
+        if not entries: raise ValueError(f'No collectible descriptions found in {filename}')
+        for i,desc in entries:
+            desc = re.sub(r'\{\{Quality([0-4])\}\}', r'品质\1', desc)
             clean = re.sub(r'\{\{.*?\}\}', '', desc).replace('#','；').replace('\\"','"')
             result[int(i)] = clean.strip()
     return result
@@ -36,7 +43,9 @@ def build():
     community = {x['game_id']:x for x in json.loads((RAW/'community_items.json').read_text())}
     pools = {}
     for pool in ET.parse(RAW/'itempools.xml').getroot():
-        if pool.get('Name') not in POOLS: continue
+        name = pool.get('Name')
+        if name.startswith('greed'): continue
+        if name not in POOLS: raise ValueError(f'Unknown normal-mode item pool: {name}')
         for item in pool:
             if float(item.get('Weight','1')) > 0:
                 pools.setdefault(int(item.get('Id')),set()).add(POOLS[pool.get('Name')])
@@ -58,7 +67,7 @@ def build():
     assert all(x['name'] and 0<=x['quality']<=4 for x in items)
     missing=[x['id'] for x in items if not x['image'] or not (ROOT/'public'/x['image'].lstrip('/')).exists()]
     if missing: raise ValueError(f'Missing icons: {missing}')
-    output={'version':'repentance-1.7.9b-demo-1','gameVersion':'忏悔 1.7.9b','items':items}
+    output={'version':VERSION,'gameVersion':GAME_VERSION,'items':items}
     (ROOT/'public/data').mkdir(exist_ok=True)
     (ROOT/'public/data/items.json').write_text(json.dumps(output,ensure_ascii=False,separators=(',',':'))+'\n')
     print(f'Built {len(items)} items, {sum(bool(x["description"]) for x in items)} Chinese descriptions.')

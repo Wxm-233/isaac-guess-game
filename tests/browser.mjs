@@ -1,21 +1,32 @@
 // Optional browser QA: PLAYWRIGHT_MODULE=/absolute/path/to/playwright/index.mjs node tests/browser.mjs
 import assert from 'node:assert/strict';
-import { mkdir } from 'node:fs/promises';
+import { mkdir, readFile } from 'node:fs/promises';
+const dataset=JSON.parse(await readFile(new URL('../public/data/items.json',import.meta.url),'utf8'));
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
 const browser=await chromium.launch({headless:true});
 const errors=[];
 const base=process.env.DEMO_URL||'http://127.0.0.1:5173';
 const shots=process.env.SCREENSHOT_DIR||'/tmp/isaac-demo-screenshots';
 await mkdir(shots,{recursive:true});
-async function setup(viewport={width:1440,height:1000}){
+async function setup(viewport={width:1440,height:1000},saved={round:{version:dataset.version,targetId:105,guesses:[],revealed:false,counted:false},stats:{played:0,won:0,best:null}}){
  const context=await browser.newContext({viewport});
- await context.addInitScript(()=>{if(!localStorage.getItem('isaac-guess-demo-v1'))localStorage.setItem('isaac-guess-demo-v1',JSON.stringify({round:{version:'repentance-1.7.9b-demo-1',targetId:105,guesses:[],revealed:false,counted:false},stats:{played:0,won:0,best:null}}));});
+ await context.addInitScript(saved=>{if(!localStorage.getItem('isaac-guess-demo-v1'))localStorage.setItem('isaac-guess-demo-v1',JSON.stringify(saved));},saved);
  const page=await context.newPage();page.on('pageerror',e=>errors.push(e.message));
- await page.goto(base);await page.waitForFunction(()=>document.querySelector('#dataset-count').textContent==='717 件道具');
+ await page.goto(base);await page.waitForFunction(count=>document.querySelector('#dataset-count').textContent===`${count} 件道具`,dataset.items.length);
  return {context,page};
 }
 async function guess(page,query){await page.locator('#guess-input').fill(query);await page.locator('[role=option]').first().waitFor();await page.locator('#guess-input').press('Enter');}
 try{
+ const previous={round:{version:'repentance-1.7.9b-demo-1',targetId:105,guesses:[1,2],revealed:false,counted:false},stats:{played:7,won:4,best:2}};
+ const migration=await setup(undefined,previous);
+ const migrated=await migration.page.evaluate(()=>JSON.parse(localStorage.getItem('isaac-guess-demo-v1')));
+ assert.equal(migrated.round.version,dataset.version);
+ assert.deepEqual(migrated.round.guesses,[]);
+ assert.deepEqual(migrated.stats,previous.stats);
+ assert.equal(await migration.page.locator('.version-pill').getAttribute('title'),dataset.gameVersion);
+ await migration.page.locator('#about-button').click();
+ assert.ok((await migration.page.locator('#modal-content').innerText()).includes(dataset.gameVersion));
+ await migration.context.close();
  // Enter triggers a synthetic click on the form's submit button before submit.
  // Both keyboard and button submission must keep the highlighted option.
  for (const viewport of [{width:1440,height:1000},{width:390,height:844}]) {

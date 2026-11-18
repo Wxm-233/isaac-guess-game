@@ -1,0 +1,2107 @@
+{
+  "from": "忏悔 1.7.9b",
+  "to": "忏悔+ 1.9.7.17",
+  "itemCount": 717,
+  "changedItems": 186,
+  "changedFields": {
+    "quality": 143,
+    "type": 0,
+    "pools": 17,
+    "tags": 5,
+    "charge": 6,
+    "unlock": 0,
+    "description": 30
+  },
+  "changes": [
+    {
+      "id": 2,
+      "name": "内眼",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 5,
+      "name": "我的镜像",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 8,
+      "name": "波比兄弟",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝宝商店",
+            "宝箱房",
+            "恶魔房"
+          ],
+          "after": [
+            "宝宝商店",
+            "宝箱房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 17,
+      "name": "骷髅钥匙",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        },
+        "pools": {
+          "before": [
+            "宝箱房",
+            "隐藏房"
+          ],
+          "after": [
+            "宝箱房",
+            "钥匙大师",
+            "隐藏房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 20,
+      "name": "超凡升天",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 21,
+      "name": "指南针",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 35,
+      "name": "死灵之书",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 38,
+      "name": "塔米猫的头",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 39,
+      "name": "妈妈的胸罩",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 48,
+      "name": "丘比特之箭",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 54,
+      "name": "藏宝图",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 56,
+      "name": "烦事柠檬",
+      "changes": {
+        "description": {
+          "before": "留下一摊水迹；水迹每秒造成24点伤害",
+          "after": "留下一摊水迹；水迹每秒造成24点伤害；水迹在离开房间前持续存在"
+        }
+      }
+    },
+    {
+      "id": 57,
+      "name": "仰慕之交",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 62,
+      "name": "吸血鬼之魅",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 65,
+      "name": "无政府主义者食谱",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 66,
+      "name": "沙漏",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 67,
+      "name": "玛姬姐妹",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝宝商店",
+            "宝箱房",
+            "恶魔房",
+            "究极隐藏房"
+          ],
+          "after": [
+            "宝宝商店",
+            "宝箱房",
+            "究极隐藏房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 73,
+      "name": "肉块",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 86,
+      "name": "萌死戳的牙",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 88,
+      "name": "小胖蛆",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 97,
+      "name": "七原罪之书",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 99,
+      "name": "吉什宝宝",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 101,
+      "name": "光环",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 111,
+      "name": "豆子",
+      "changes": {
+        "charge": {
+          "before": {
+            "kind": "normal",
+            "value": 1
+          },
+          "after": {
+            "kind": "timed",
+            "value": 120
+          }
+        }
+      }
+    },
+    {
+      "id": 112,
+      "name": "守护天使",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 113,
+      "name": "恶魔宝宝",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 117,
+      "name": "死鸟",
+      "changes": {
+        "description": {
+          "before": "受伤时, 生成1只攻击敌人的鸟；鸟每秒造成4.3点接触伤害",
+          "after": "受伤时, 生成1只攻击敌人的鸟；鸟每秒造成4.3点接触伤害；角色只有半心时, 切换房间也持续存在"
+        }
+      }
+    },
+    {
+      "id": 125,
+      "name": "波比炸弹",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 131,
+      "name": "炸弹袋",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 135,
+      "name": "献血袋",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 136,
+      "name": "最好的朋友",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 137,
+      "name": "起爆器",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 141,
+      "name": "盛装男孩",
+      "changes": {
+        "description": {
+          "before": "生成7随机硬币",
+          "after": "生成7随机硬币；生成1随机硬币饰品"
+        }
+      }
+    },
+    {
+      "id": 148,
+      "name": "害虫横行",
+      "changes": {
+        "tags": {
+          "before": [],
+          "after": [
+            "苍蝇"
+          ]
+        }
+      }
+    },
+    {
+      "id": 160,
+      "name": "撕裂苍穹",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 161,
+      "name": "安卡十字",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 172,
+      "name": "献祭匕首",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝宝商店",
+            "宝箱房",
+            "恶魔房"
+          ],
+          "after": [
+            "宝箱房",
+            "恶魔房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 177,
+      "name": "便携式老虎机",
+      "changes": {
+        "pools": {
+          "before": [
+            "乞丐",
+            "商店",
+            "究极隐藏房"
+          ],
+          "after": [
+            "究极隐藏房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 181,
+      "name": "小白马",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 186,
+      "name": "血之权利",
+      "changes": {
+        "description": {
+          "before": "对所有敌人造成40点伤害； 对角色造成1心伤害；在房间中首次使用后, 改为造成半心伤害； 优先消耗红心",
+          "after": "对所有敌人造成40点伤害； 当前房间中射速修正+0.48； 对角色造成1心伤害；在房间中首次使用后, 改为造成半心伤害； 优先消耗红心"
+        }
+      }
+    },
+    {
+      "id": 195,
+      "name": "妈妈的零钱包",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 202,
+      "name": "弥达斯之触",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 206,
+      "name": "断头台",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 207,
+      "name": "绷带球",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 209,
+      "name": "屁股炸弹",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 222,
+      "name": "反重力",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 223,
+      "name": "纵火狂",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝箱房"
+          ],
+          "after": [
+            "宝箱房",
+            "炸弹乞丐"
+          ]
+        }
+      }
+    },
+    {
+      "id": 236,
+      "name": "大肠杆菌",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 241,
+      "name": "地狱契约",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 244,
+      "name": "科技0.5",
+      "changes": {
+        "description": {
+          "before": "时不时发射激光",
+          "after": "时不时发射激光；激光小概率带有随机效果"
+        }
+      }
+    },
+    {
+      "id": 246,
+      "name": "蓝地图",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 255,
+      "name": "螺丝",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 264,
+      "name": "智能苍蝇",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 265,
+      "name": "枯骨宝宝",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝宝商店",
+            "宝箱房"
+          ],
+          "after": [
+            "宝宝商店",
+            "宝箱房",
+            "恶魔房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 272,
+      "name": "大美蝇",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 273,
+      "name": "鲍勃的脑浆子",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 274,
+      "name": "生死之交",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝宝商店",
+            "宝箱房"
+          ],
+          "after": [
+            "宝宝商店",
+            "宝箱房",
+            "钥匙大师"
+          ]
+        }
+      }
+    },
+    {
+      "id": 279,
+      "name": "大粉丝",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 281,
+      "name": "受气包",
+      "changes": {
+        "description": {
+          "before": "诱饵跟班；敌人有时会以他而不是角色作为目标",
+          "after": "诱饵跟班；敌人有时会以他而不是角色作为目标；阻挡敌人弹幕"
+        }
+      }
+    },
+    {
+      "id": 283,
+      "name": "一百面骰",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 284,
+      "name": "四面骰",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 287,
+      "name": "秘密之书",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 289,
+      "name": "红蜡烛",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 292,
+      "name": "撒但圣经",
+      "changes": {
+        "quality": {
+          "before": 4,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 293,
+      "name": "坎卜斯的头",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 294,
+      "name": "棉豆",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        },
+        "charge": {
+          "before": {
+            "kind": "timed",
+            "value": 90
+          },
+          "after": {
+            "kind": "timed",
+            "value": 60
+          }
+        }
+      }
+    },
+    {
+      "id": 295,
+      "name": "魔术手指",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 296,
+      "name": "转换器",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 318,
+      "name": "双子座",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝箱房"
+          ],
+          "after": [
+            "宝宝商店",
+            "宝箱房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 324,
+      "name": "未定义",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 325,
+      "name": "剪刀",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 329,
+      "name": "鲁多维科科技",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        },
+        "description": {
+          "before": "角色的泪弹由1颗巨大的可控泪弹取代",
+          "after": "↑  弹速+0.2；角色的泪弹由1颗巨大的可控泪弹取代"
+        }
+      }
+    },
+    {
+      "id": 336,
+      "name": "烂洋葱",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 348,
+      "name": "安慰剂",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 351,
+      "name": "超级豆子",
+      "changes": {
+        "charge": {
+          "before": {
+            "kind": "normal",
+            "value": 3
+          },
+          "after": {
+            "kind": "normal",
+            "value": 6
+          }
+        },
+        "description": {
+          "before": "使房间中所有敌人石化； 造成5点伤害并使附近敌人中毒；向角色移动方向发出岩石波；岩石波可打开隐藏房和粉碎石头",
+          "after": "使房间中所有敌人石化并造成100点伤害； 造成5点伤害并使附近敌人中毒；可打开隐藏房并粉碎岩石"
+        }
+      }
+    },
+    {
+      "id": 363,
+      "name": "宣誓守护者",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 367,
+      "name": "粘性炸弹",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 368,
+      "name": "溢泪症",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 372,
+      "name": "充电宝宝",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 384,
+      "name": "肉山宝宝",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 387,
+      "name": "香炉",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 390,
+      "name": "撒拉弗",
+      "changes": {
+        "tags": {
+          "before": [
+            "宝宝"
+          ],
+          "after": [
+            "天使",
+            "宝宝"
+          ]
+        }
+      }
+    },
+    {
+      "id": 394,
+      "name": "十字准星",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 396,
+      "name": "心室手术刀",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 398,
+      "name": "神体蘑菇",
+      "changes": {
+        "description": {
+          "before": "10%概率发射使敌人缩小的泪弹；缩小的敌人可以被踩死",
+          "after": "20%概率发射使敌人缩小的泪弹；缩小的敌人可以被踩死"
+        }
+      }
+    },
+    {
+      "id": 400,
+      "name": "命运之矛",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 406,
+      "name": "八面骰",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 412,
+      "name": "恶魔受胎",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 420,
+      "name": "黑色粉末",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        },
+        "description": {
+          "before": "在地上走1个圈会产生五角星符号, 4秒内造成130点接触伤害",
+          "after": "在地上走1个圈会产生五角星符号, 4秒内造成130点接触伤害；获得更大范围的爆炸效果；火堆熄灭时会爆炸"
+        }
+      }
+    },
+    {
+      "id": 421,
+      "name": "腰豆",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        },
+        "charge": {
+          "before": {
+            "kind": "normal",
+            "value": 1
+          },
+          "after": {
+            "kind": "timed",
+            "value": 120
+          }
+        }
+      }
+    },
+    {
+      "id": 431,
+      "name": "多维宝宝",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝箱房",
+            "恶魔房"
+          ],
+          "after": [
+            "宝宝商店",
+            "宝箱房",
+            "恶魔房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 433,
+      "name": "我的影子",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 436,
+      "name": "牛奶！",
+      "changes": {
+        "description": {
+          "before": "受伤后, 在当前房间中获得射速提升",
+          "after": "阻挡弹幕； 受击10次后, 破裂并在本层获得射速提升"
+        }
+      }
+    },
+    {
+      "id": 447,
+      "name": "流连豆",
+      "changes": {
+        "description": {
+          "before": "每连续发射7.5秒时, 生成一朵便便云；便便云每秒造成5次1x角色伤害；便便云持续15秒, 可通过射击便便云使其移动",
+          "after": "每连续发射4秒时, 生成一朵便便云；10秒内尺寸不断变大；尺寸越大伤害越低；可通过射击便便云使其移动"
+        }
+      }
+    },
+    {
+      "id": 452,
+      "name": "静脉曲张",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 470,
+      "name": "死寂宝宝",
+      "changes": {
+        "description": {
+          "before": "在房间中四处漂浮；每秒造成30点接触伤害；角色发射时停止移动；停下来时可阻挡弹幕",
+          "after": "在房间中四处漂浮；每秒造成30点接触伤害；角色发射时停止移动；停下来时可阻挡弹幕并散射泪弹"
+        }
+      }
+    },
+    {
+      "id": 475,
+      "name": "计划C",
+      "changes": {
+        "description": {
+          "before": "对所有敌人造成9,999,999点伤害； 在3秒后击杀角色",
+          "after": "对所有敌人造成9,999,999点伤害； 在3秒后击杀角色；精神错乱与母亲为10到12秒"
+        }
+      }
+    },
+    {
+      "id": 477,
+      "name": "虚空",
+      "changes": {
+        "quality": {
+          "before": 4,
+          "after": 3
+        },
+        "charge": {
+          "before": {
+            "kind": "normal",
+            "value": 6
+          },
+          "after": {
+            "kind": "normal",
+            "value": 4
+          }
+        }
+      }
+    },
+    {
+      "id": 478,
+      "name": "暂停",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 480,
+      "name": "堆肥",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 481,
+      "name": "数据破解",
+      "changes": {
+        "description": {
+          "before": "↑ 随机属性提升；↓ 随机属性降低； 当前房间中随机泪弹效果； 损坏当前房间中的所有贴图和音乐",
+          "after": "↑ 随机属性提升；↓ 随机属性降低； 当前房间中随机泪弹效果；将底座道具变为错误道具； 损坏当前房间中的所有贴图和音乐"
+        }
+      }
+    },
+    {
+      "id": 482,
+      "name": "遥控器",
+      "changes": {
+        "description": {
+          "before": "将角色换为其他随机角色；移除最近收集到的1个道具",
+          "after": "将角色换为其他随机角色；50%概率移除最近收集的1个道具"
+        }
+      }
+    },
+    {
+      "id": 486,
+      "name": "钝剃刀片",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 489,
+      "name": "无限面骰",
+      "changes": {
+        "charge": {
+          "before": {
+            "kind": "normal",
+            "value": 2
+          },
+          "after": {
+            "kind": "normal",
+            "value": 4
+          }
+        }
+      }
+    },
+    {
+      "id": 490,
+      "name": "伊甸的灵魂",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 493,
+      "name": "肾上腺素",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 500,
+      "name": "袋中袋",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 507,
+      "name": "尖头吸管",
+      "changes": {
+        "description": {
+          "before": "对所有敌人造成1x角色伤害+敌人最大血量10%的伤害； 造成伤害时, 15%概率生成半红心 ； 若角色没有心之容器则改为生成半魂心",
+          "after": "对所有敌人造成1x角色伤害+敌人最大血量10%的伤害； 造成伤害时, 15%概率生成半红心"
+        }
+      }
+    },
+    {
+      "id": 508,
+      "name": "妈妈的剃刀",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 510,
+      "name": "精神错乱",
+      "changes": {
+        "description": {
+          "before": "当前房间中生成1个友好的精神错乱版的头目",
+          "after": "生成1个友好的精神错乱版的头目；切换房间持续存在； 一次只能激活1个头目；生成的头目血量会随时间流失"
+        }
+      }
+    },
+    {
+      "id": 511,
+      "name": "愤怒苍蝇",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝宝商店",
+            "宝箱房",
+            "究极隐藏房"
+          ],
+          "after": [
+            "宝宝商店",
+            "宝箱房",
+            "究极隐藏房",
+            "钥匙大师"
+          ]
+        }
+      }
+    },
+    {
+      "id": 516,
+      "name": "洒水器",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 519,
+      "name": "精神错乱宝宝",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        },
+        "tags": {
+          "before": [],
+          "after": [
+            "宝宝"
+          ]
+        }
+      }
+    },
+    {
+      "id": 520,
+      "name": "跨接电缆",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 525,
+      "name": "麻风病",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 530,
+      "name": "死神名册",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 532,
+      "name": "食泪症",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 536,
+      "name": "祭坛",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 539,
+      "name": "神秘的卵",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        },
+        "pools": {
+          "before": [
+            "宝箱房"
+          ],
+          "after": [
+            "宝宝商店",
+            "宝箱房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 542,
+      "name": "滑肋骨",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 544,
+      "name": "尖肋骨",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 545,
+      "name": "亡者之书",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 546,
+      "name": "爸爸的戒指",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 554,
+      "name": "恐怖如斯",
+      "changes": {
+        "description": {
+          "before": "使近距离的敌人恐惧",
+          "after": "↑  射速修正+0.5；↑  弹速+0.2； 使近距离的敌人恐惧"
+        }
+      }
+    },
+    {
+      "id": 555,
+      "name": "金剃刀片",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 556,
+      "name": "炼金硫磺",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 560,
+      "name": "好疼",
+      "changes": {
+        "description": {
+          "before": "受伤时, 在当前房间中获得:；↑  首次受伤射速修正+1.2；↑  后续受伤射速修正+0.4；在角色周围释放10颗泪弹",
+          "after": "受伤时, 在当前房间中获得:；↑  首次受伤射速修正+1.2；↑  后续受伤射速修正+0.4；在角色周围释放10颗泪弹；泪弹击中时留下水迹"
+        }
+      }
+    },
+    {
+      "id": 562,
+      "name": "谷底石",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 4
+        }
+      }
+    },
+    {
+      "id": 563,
+      "name": "魅彩炸弹",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 564,
+      "name": "肥皂",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 565,
+      "name": "嗜血小宠",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝箱房",
+            "究极隐藏房",
+            "红箱子",
+            "诅咒房"
+          ],
+          "after": [
+            "宝宝商店",
+            "宝箱房",
+            "究极隐藏房",
+            "红箱子",
+            "诅咒房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 568,
+      "name": "神圣干预",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 574,
+      "name": "圣体匣",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 575,
+      "name": "侵体蜘蛛",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 577,
+      "name": "达摩克里斯之剑",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 578,
+      "name": "免费柠檬水",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 582,
+      "name": "迷幻蘑菇",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 583,
+      "name": "罐中火箭",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 585,
+      "name": "白玉香膏盒",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 589,
+      "name": "月亮",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 3
+        }
+      }
+    },
+    {
+      "id": 590,
+      "name": "水星",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 593,
+      "name": "火星",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 0
+        },
+        "description": {
+          "before": "双击移动键使角色冲锋； 冲锋时角色无敌, 造成4x角色伤害+8的伤害； 3秒冷却",
+          "after": "双击移动键使角色冲锋； 冲锋时角色无敌, 造成4x角色伤害+8的伤害； 3秒冷却； 撞击时在角色周围生成火圈"
+        }
+      }
+    },
+    {
+      "id": 594,
+      "name": "木星",
+      "changes": {
+        "description": {
+          "before": "↑  +2空心之容器；↓  移速-0.3； 治疗半红心； 不移动时累积最多+0.5移速； 移动时向后释放毒气； 免疫中毒",
+          "after": "↑  +2空心之容器；↓  移速-0.3； 治疗2红心； 静止不动时, 移速逐渐升高至+0.5； 移动时释放毒气； 免疫中毒"
+        }
+      }
+    },
+    {
+      "id": 605,
+      "name": "挖眼勺",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 606,
+      "name": "邪眼裂口",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 610,
+      "name": "鸟肥笼",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 612,
+      "name": "迷失游魂",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 617,
+      "name": "磁石",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 622,
+      "name": "创世记",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 623,
+      "name": "尖头钥匙",
+      "changes": {
+        "pools": {
+          "before": [
+            "商店"
+          ],
+          "after": [
+            "商店",
+            "钥匙大师"
+          ]
+        }
+      }
+    },
+    {
+      "id": 631,
+      "name": "切肉刀",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 632,
+      "name": "邪眼护符",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        },
+        "description": {
+          "before": "↑  幸运+2；免疫烧伤, 混乱, 恐惧, 毒气效果",
+          "after": "↑  幸运+2；免疫火焰伤害, 混乱, 恐惧, 蜘蛛网, 毒气效果；获得1秒水迹免疫"
+        }
+      }
+    },
+    {
+      "id": 634,
+      "name": "炼狱恶鬼",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 637,
+      "name": "强力安眠药",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 638,
+      "name": "橡皮擦",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 641,
+      "name": "血田",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 643,
+      "name": "终末天启",
+      "changes": {
+        "description": {
+          "before": "+2魂心；飞行； 可蓄力发射高伤害圣光柱；不会取代角色的泪弹",
+          "after": "飞行； 可蓄力发射高伤害圣光柱；不会取代角色的泪弹"
+        }
+      }
+    },
+    {
+      "id": 650,
+      "name": "糖梅溜溜笛",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 651,
+      "name": "伯列恒之星",
+      "changes": {
+        "description": {
+          "before": "从本层初始房间向头目房缓慢移动；角色领先则移动加快, 角色落后则移动减慢；站在光环中获得:；↑  射速修正x2.5；↑  伤害修正x1.8；追踪泪弹；50%概率忽略伤害",
+          "after": "从本层初始房间向头目房缓慢移动；角色领先则移动加快, 角色落后则移动减慢；站在光环中获得:；↑  射速修正x2.5；↑  伤害修正x1.2；追踪泪弹；50%概率忽略伤害"
+        }
+      }
+    },
+    {
+      "id": 652,
+      "name": "冰块宝宝",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝箱房"
+          ],
+          "after": [
+            "宝宝商店",
+            "宝箱房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 653,
+      "name": "驱魔护符",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 655,
+      "name": "幸运转盘",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 660,
+      "name": "牌意解读",
+      "changes": {
+        "description": {
+          "before": "在每层的初始房间中生成2个传送门；离开房间时传送门消失； 红色: 头目房； 黄色:  宝箱房； 蓝色:  隐藏房",
+          "after": "在每层的初始房间中生成2个传送门；离开房间时传送门消失； 红色:头目房； 黄色:宝箱房； 蓝色:隐藏房； 绿色: 商店"
+        }
+      }
+    },
+    {
+      "id": 665,
+      "name": "嗝屁猫的眼睛",
+      "changes": {
+        "tags": {
+          "before": [
+            "嗝屁猫"
+          ],
+          "after": [
+            "嗝屁猫",
+            "死亡"
+          ]
+        }
+      }
+    },
+    {
+      "id": 667,
+      "name": "稻草人",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 672,
+      "name": "一磅肉",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        }
+      }
+    },
+    {
+      "id": 674,
+      "name": "灵魂枷锁",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 677,
+      "name": "灵魂出窍",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 681,
+      "name": "黑洞宝宝",
+      "changes": {
+        "quality": {
+          "before": 1,
+          "after": 0
+        },
+        "description": {
+          "before": "向前飞行并造成接触伤害；飞行时吸收掉落物；每吸收1个都增加其体积和伤害, 并生成1只蓝苍蝇；每吸收4个, 生成1个通向未探索房间的传送门",
+          "after": "双击发射键可发射传送门；发射后造成接触伤害；消耗经过的掉落物；消耗掉落物会提升其尺寸, 伤害并生成1只蓝苍蝇；消耗(当前楼层数+1)个掉落物生成通往特殊房间的传送门, 跟班在本层后续中消失；房间中的内容本局持续存在"
+        }
+      }
+    },
+    {
+      "id": 685,
+      "name": "魂火罐",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        },
+        "description": {
+          "before": "生成1随机魂火；每次使用多生成1魂火, 最多12个",
+          "after": "生成2随机魂火；每次使用多生成1魂火, 最多12个"
+        }
+      }
+    },
+    {
+      "id": 687,
+      "name": "寻友护符",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 691,
+      "name": "十字圣球",
+      "changes": {
+        "description": {
+          "before": "阻止品质为/的道具生成；33%概率重置品质为的道具",
+          "after": "阻止品质为品质0/品质1的道具生成；33%概率重置品质为品质2的道具"
+        }
+      }
+    },
+    {
+      "id": 697,
+      "name": "消失的胞胎",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        },
+        "pools": {
+          "before": [
+            "诅咒房",
+            "隐藏房"
+          ],
+          "after": [
+            "宝宝商店",
+            "诅咒房",
+            "隐藏房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 701,
+      "name": "以撒的坟墓",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 703,
+      "name": "小以扫",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 704,
+      "name": "狂怒！",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 705,
+      "name": "暗仪刺刀",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 706,
+      "name": "无底坑",
+      "changes": {
+        "quality": {
+          "before": 4,
+          "after": 3
+        },
+        "description": {
+          "before": "消耗房间中所有底座道具并对应生成蝗虫跟班；蝗虫造成2x-3x角色伤害；一些道具会生成特殊蝗虫",
+          "after": "消耗房间中所有底座道具并对应生成蝗虫跟班；一些道具会生成特殊蝗虫； 蝗虫造成1x角色伤害, 并根据道具品质修正:；品质0 - 0.5x；品质1 - 0.75x；品质2 - 1.0x；品质3 - 1.5x；品质4 - 2.0x"
+        }
+      }
+    },
+    {
+      "id": 709,
+      "name": "背摔！",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 719,
+      "name": "店主的盒子",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 720,
+      "name": "百宝罐",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 722,
+      "name": "孤魂铁索",
+      "changes": {
+        "quality": {
+          "before": 3,
+          "after": 2
+        }
+      }
+    },
+    {
+      "id": 725,
+      "name": "大肠激躁症",
+      "changes": {
+        "tags": {
+          "before": [],
+          "after": [
+            "便便"
+          ]
+        }
+      }
+    },
+    {
+      "id": 727,
+      "name": "幽灵炸弹",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    },
+    {
+      "id": 728,
+      "name": "格罗",
+      "changes": {
+        "pools": {
+          "before": [
+            "宝箱房",
+            "恶魔房",
+            "究极隐藏房"
+          ],
+          "after": [
+            "宝宝商店",
+            "宝箱房",
+            "恶魔房",
+            "究极隐藏房"
+          ]
+        }
+      }
+    },
+    {
+      "id": 729,
+      "name": "飞头攻击",
+      "changes": {
+        "quality": {
+          "before": 2,
+          "after": 1
+        }
+      }
+    }
+  ]
+}

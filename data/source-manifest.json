@@ -1,45 +1,78 @@
 {
   "retrievedDate": "2026-11-17",
-  "gameVersion": "Repentance 1.7.9b",
+  "gameVersion": "Repentance+ 1.9.7.17.J460",
   "sources": [
     {
       "file": "data/raw/items.xml",
-      "url": "https://raw.githubusercontent.com/2o181o28/eden-seed-finder/master/item_data/items_rep.xml",
-      "sha256": "ee567ed920b1bcada61f2a2d65e48563286fe7e8bf00363ad763ac2aa3ae64b7"
+      "sha256": "37a8d1b2377feef78b5690b859abff23ab81b98b06f1a41c83d4392db35fc556",
+      "source": "Installed vanilla Repentance+ 1.9.7.17.J460",
+      "archive": "resources/packed/afterbirthp.a",
+      "archiveEntry": "resources/items.xml",
+      "retrievedDate": "2026-11-18",
+      "sha256NormalizedLF": "c21ffd5513bd7da93ab461c4640843d4c445c4a34efd208d877bb45c31bef431"
     },
     {
       "file": "data/raw/items_metadata.xml",
-      "url": "https://raw.githubusercontent.com/2o181o28/eden-seed-finder/master/item_data/items_metadata_rep.xml",
-      "sha256": "42b3eb47a2f39d7120708ad32a790fc0c1129dd845f3cbdc969d702a5f17152e"
+      "sha256": "dff50aa979ec67137f2ed1374a50b9386fe98b3935142502bc2630161cf1c6c2",
+      "source": "Installed vanilla Repentance+ 1.9.7.17.J460",
+      "archive": "resources/packed/afterbirthp.a",
+      "archiveEntry": "resources/items_metadata.xml",
+      "retrievedDate": "2026-11-18",
+      "sha256NormalizedLF": "a3f33024c3aa455b5a44cae50ae012a355f86bd7a21366ded592845f1d057bdd"
     },
     {
       "file": "data/raw/itempools.xml",
-      "url": "https://raw.githubusercontent.com/2o181o28/eden-seed-finder/master/item_data/itempools_rep.xml",
-      "sha256": "da5391ba59626b0fe349fa6d143df82cd7c19c648f04311d8e21a441d5aa502c"
+      "sha256": "225f4e3db8cce4820b1a78e6aa8998809ab0cb41967e1e780be64b98c594e6e1",
+      "source": "Installed vanilla Repentance+ 1.9.7.17.J460",
+      "archive": "resources/packed/afterbirthp.a",
+      "archiveEntry": "resources/itempools.xml",
+      "retrievedDate": "2026-11-18",
+      "sha256NormalizedLF": "fbfff1c2f06e43f27f5ff79217466cec6a6986ce92008e83808d9ae3d2537cc6"
     },
     {
       "file": "data/raw/names_zh.lua",
       "url": "https://raw.githubusercontent.com/wofsauge/External-Item-Descriptions/master/descriptions/names/zh_cn.lua",
-      "sha256": "021ddad613e3f6736b18c15f7d24f03929b2919300adbe8c0fd806b25d5321f5"
+      "sha256": "021ddad613e3f6736b18c15f7d24f03929b2919300adbe8c0fd806b25d5321f5",
+      "sha256NormalizedLF": "021ddad613e3f6736b18c15f7d24f03929b2919300adbe8c0fd806b25d5321f5"
     },
     {
       "file": "data/raw/descriptions_zh.lua",
       "url": "https://raw.githubusercontent.com/wofsauge/External-Item-Descriptions/master/descriptions/rep/zh_cn.lua",
-      "sha256": "70c73e1ad2ace7f7c9fc2c0bb1f205377b2289f6bdaae0cafbb82de203a8b913"
+      "sha256": "70c73e1ad2ace7f7c9fc2c0bb1f205377b2289f6bdaae0cafbb82de203a8b913",
+      "sha256NormalizedLF": "086c3dd818ee733f34942fe615530dfdf411b4454a5138b922913b621707a580"
     },
     {
       "file": "data/raw/descriptions_base_zh.lua",
       "url": "https://raw.githubusercontent.com/wofsauge/External-Item-Descriptions/master/descriptions/ab%2B/zh_cn.lua",
-      "sha256": "6e107fc2005bb3ba508626107ae84465308bc4f0f5b4f933d34477bec3f5b9d2"
+      "sha256": "6e107fc2005bb3ba508626107ae84465308bc4f0f5b4f933d34477bec3f5b9d2",
+      "sha256NormalizedLF": "1e433c996078f30c06ebb86ad97e68ba2a488e5c4c3f9030f9b7149a20fd89e1"
     },
     {
       "file": "data/raw/community_items.json",
       "url": "https://raw.githubusercontent.com/Swashua/Bindings-of-Isaac-Cheat-Sheet/main/data/items.json",
-      "sha256": "66dad9614afad4fcdc5abf166b8d1b4f2f57d8a7e7eba7bb0ed3379aa486473c"
+      "sha256": "66dad9614afad4fcdc5abf166b8d1b4f2f57d8a7e7eba7bb0ed3379aa486473c",
+      "sha256NormalizedLF": "66dad9614afad4fcdc5abf166b8d1b4f2f57d8a7e7eba7bb0ed3379aa486473c"
+    },
+    {
+      "file": "data/raw/descriptions_repplus_zh.lua",
+      "url": "https://raw.githubusercontent.com/wofsauge/External-Item-Descriptions/993c881e0e52e08e1e8e87fcc068625961dcbd1a/descriptions/rep%2B/zh_cn.lua",
+      "retrievedDate": "2026-11-18",
+      "sha256": "de365adcc1c442701c0dc495874f182b81f910c37a60b6f9785955fdc833c2ca",
+      "sha256NormalizedLF": "11cfcdcfea278920d502179c388fa5ba3dd4b508b3b15ca77be75ee6810c7e02"
     }
   ],
   "icons": {
     "url": "https://github.com/Swashua/Bindings-of-Isaac-Cheat-Sheet/tree/main/public/images/items",
     "count": 720
+  },
+  "updatedDate": "2026-11-18",
+  "gameResources": {
+    "version": "1.9.7.17.J460",
+    "versionEvidence": "Installed game log startup version",
+    "archive": "resources/packed/afterbirthp.a",
+    "archiveSha256": "a7f43fdc44e594442d064779dbc701b964c96486bc7e3cf4f544555880436c07",
+    "extractor": "Bundled tools/ResourceExtractor/Linux/resource_extractor",
+    "extractedDirectory": "resources",
+    "note": "Repentance+ uses the resources configuration from afterbirthp.a. The resources-dlc3 configuration in repentance.a is the old Repentance data."
   }
 }

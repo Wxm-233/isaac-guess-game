@@ -1,12 +1,38 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { compare,compareSet,compareCharge,chargeLabel,searchItems,submitGuess,roundStatus,restoreRound } from '../public/game.js';
 
 const data=JSON.parse(readFileSync(new URL('../public/data/items.json',import.meta.url)));
 const items=data.items, byId=new Map(items.map(x=>[x.id,x]));
 const round = (targetId=105)=>({version:data.version,targetId,guesses:[],revealed:false,counted:false});
 
+test('Repentance+ snapshots match the recorded source hashes across checkout line endings',()=>{
+ const manifest=JSON.parse(readFileSync(new URL('../data/source-manifest.json',import.meta.url)));
+ assert.equal(manifest.gameVersion,'Repentance+ 1.9.7.17.J460');
+ for(const source of manifest.sources){
+  const text=readFileSync(new URL(`../${source.file}`,import.meta.url),'utf8').replace(/\r\n/g,'\n');
+  assert.equal(createHash('sha256').update(text).digest('hex'),source.sha256NormalizedLF,source.file);
+ }
+});
+test('Repentance+ balance changes drive quality, pools, tags, charges and descriptions',()=>{
+ assert.equal(data.gameVersion,'忏悔+ 1.9.7.17');
+ assert.equal(byId.get(562).quality,4); // Rock Bottom
+ assert.equal(byId.get(283).quality,1); // D100
+ assert.equal(byId.get(477).quality,3); // Void
+ assert.deepEqual(byId.get(477).charge,{kind:'normal',value:4});
+ assert.deepEqual(byId.get(351).charge,{kind:'normal',value:6});
+ assert.deepEqual(byId.get(111).charge,{kind:'timed',value:120});
+ assert.equal(chargeLabel(byId.get(111).charge),'4 秒');
+ assert.ok(!byId.get(8).pools.includes('恶魔房'));
+ assert.ok(byId.get(623).pools.includes('钥匙大师'));
+ assert.ok(byId.get(665).tags.includes('死亡'));
+ assert.match(byId.get(117).description,/半心/);
+ assert.doesNotMatch(byId.get(643).description,/魂心/);
+ assert.match(byId.get(706).description,/品质4 - 2\.0x/);
+ assert.match(byId.get(1).description,/射速/); // Base descriptions still survive overlays.
+});
 test('717 unique non-hidden collectibles, every item has complete local resources and search data',()=>{
  assert.equal(items.length,717);assert.equal(byId.size,717);
  for(const x of items){
