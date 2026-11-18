@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f3efe5">
+  <meta name="description" content="撒一把：根据品质、道具池和标签，猜出神秘的以撒道具。">
+  <title>撒一把 · 以撒道具猜猜看</title>
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="撒一把首页"><img src="./assets/favicon.svg" alt="" width="38" height="38"><span>撒一把<span class="brand-en">ISAAC GUESS</span></span></a>
+    <nav aria-label="主导航"><span class="nav-active"><span class="status-dot"></span>单人练习</span><button class="text-button" id="rules-button"><span class="question-icon">?</span>玩法说明</button></nav>
+  </header>
+  <main>
+    <section class="intro">
+      <div><div class="eyebrow"><span></span> THE BINDING OF ISAAC · GUESS THE ITEM</div><h1>这件道具，你一定见过<span class="title-dot">。</span></h1><p>一点记忆，一点推理。看看你能用几次猜中它。</p></div>
+      <div class="intro-art" aria-hidden="true"><span class="art-note">是它……吗？</span><span class="floating-item item-one"><img id="hero-item-one" alt=""></span><span class="mystery-paper"><span class="question-mark">?</span><span class="paper-eye left"></span><span class="paper-eye right"></span></span><span class="floating-item item-two"><img id="hero-item-two" alt=""></span><span class="art-star">✧</span></div>
+    </section>
+    <div class="game-layout">
+      <section class="game-card" aria-label="猜道具游戏">
+        <div class="game-toolbar"><div class="round-title"><span class="small-dice">⚄</span><strong>神秘道具</strong><span class="version-pill">忏悔</span></div><span id="attempt-counter" class="attempt-counter">剩余 <strong>8</strong> 次机会</span></div>
+        <div class="health-row" id="health-row" aria-label="剩余猜测机会"></div>
+        <form id="guess-form" class="guess-form" autocomplete="off">
+          <div class="search-wrap"><span class="search-icon" aria-hidden="true"></span><input id="guess-input" type="text" placeholder="输入道具名、俗称、拼音或英文…" role="combobox" aria-label="搜索要猜测的道具" aria-autocomplete="list" aria-expanded="false" aria-controls="suggestions" maxlength="100" disabled><kbd>/</kbd><div id="suggestions" class="suggestions" role="listbox" aria-label="匹配道具" hidden></div></div>
+          <button id="guess-button" class="primary-button" type="submit" disabled>猜一下 <span aria-hidden="true">↵</span></button>
+        </form>
+        <div class="search-caption"><span id="search-caption">支持俗称搜索，试试「狗头」「妈刀」「D6」</span><span id="dataset-count">加载题库中…</span></div>
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+        <div class="legend"><span><i class="swatch correct"></i>完全匹配</span><span><i class="swatch close"></i>部分匹配 / 接近</span><span><i class="swatch wrong"></i>不匹配</span><span class="legend-arrow">↑ ↓ <span>目标更高 / 更低</span></span></div>
+        <div class="table-scroll"><table class="guess-table"><thead><tr><th>你的猜测</th><th>品质</th><th>类型</th><th>道具池</th><th>标签</th><th>充能</th><th>需解锁</th></tr></thead><tbody id="guess-rows"></tbody></table></div>
+        <div id="empty-state" class="empty-state"><div class="empty-illustration" aria-hidden="true"><svg viewBox="0 0 120 90"><path d="M25 65 60 53 95 65 60 79Z" fill="#d9d0bb" stroke="#8e8370" stroke-width="2"/><path d="M25 65v9l35 12 35-12v-9M60 79v7" fill="none" stroke="#8e8370" stroke-width="2"/><path d="M46 52c-5-7-4-16 2-21 7-6 20-5 26 2 4 6 3 14-1 19" fill="#ece5d7" stroke="#8e8370" stroke-width="2"/><path d="M56 41c0-7 10-7 10-1 0 4-6 4-6 9" fill="none" stroke="#8e8370" stroke-width="3" stroke-linecap="round"/><circle cx="60" cy="54" r="1.5" fill="#8e8370"/><path d="m30 24 3 6 6 1-6 2-3 6-2-6-6-2 6-1ZM88 15l2 4 5 2-5 1-2 5-1-5-5-1 5-2Z" fill="#b2a68c"/></svg></div><h2>从你最熟悉的道具开始</h2><p>每次猜测，都会离答案更近一点。</p><div class="starter-items" id="starter-items"></div></div>
+        <section id="result" class="result" aria-live="polite" hidden></section>
+        <div class="game-bottom"><span class="save-note"><span class="status-dot"></span><span id="save-note">进度自动保存在此浏览器</span></span><div><button class="text-button muted" id="give-up" disabled>揭晓答案</button><button class="text-button" id="restart" disabled>↻ 换一局</button></div></div>
+      </section>
+      <aside class="sidebar">
+        <section class="note-card"><div class="tape" aria-hidden="true"></div><div class="note-heading"><span>✎</span><h2>地下室小抄</h2></div><ol><li><span>01</span><div><strong>想一件道具</strong><p>输入名字或俗称，从列表中选择。</p></div></li><li><span>02</span><div><strong>观察颜色与箭头</strong><p>用每一列的反馈，缩小答案范围。</p></div></li><li><span>03</span><div><strong>八次机会，撒一把</strong><p>找到那件熟悉又陌生的道具。</p></div></li></ol><div class="note-tip"><strong>小提示</strong><p>道具可能属于多个池。黄色意味着至少有一个相同。</p></div></section>
+        <section class="stats-card"><h2>我的战绩 <span>本地记录</span></h2><div class="stats-grid"><div><strong id="stat-played">0</strong><span>完成局数</span></div><div><strong id="stat-rate">—</strong><span>猜中率</span></div><div><strong id="stat-best">—</strong><span>最佳次数</span></div></div></section>
+        <p class="sidebar-flavor">“地下室里，总有你认识的老朋友。”<span>GOOD LUCK, ISAAC.</span></p>
+      </aside>
+    </div>
+    <footer><span>撒一把 <span class="footer-dot">·</span> 献给每一个走进地下室的人</span><button id="about-button" class="text-button muted">题库与来源 ↗</button></footer>
+  </main>
+  <dialog id="modal"><button class="modal-close" id="modal-close" aria-label="关闭">×</button><div id="modal-content"></div></dialog>
+  <script type="module" src="./app.js"></script>
+</body>
+</html>

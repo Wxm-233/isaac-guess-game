@@ -1,0 +1,45 @@
+{
+  "retrievedDate": "2026-11-17",
+  "gameVersion": "Repentance 1.7.9b",
+  "sources": [
+    {
+      "file": "data/raw/items.xml",
+      "url": "https://raw.githubusercontent.com/2o181o28/eden-seed-finder/master/item_data/items_rep.xml",
+      "sha256": "ee567ed920b1bcada61f2a2d65e48563286fe7e8bf00363ad763ac2aa3ae64b7"
+    },
+    {
+      "file": "data/raw/items_metadata.xml",
+      "url": "https://raw.githubusercontent.com/2o181o28/eden-seed-finder/master/item_data/items_metadata_rep.xml",
+      "sha256": "42b3eb47a2f39d7120708ad32a790fc0c1129dd845f3cbdc969d702a5f17152e"
+    },
+    {
+      "file": "data/raw/itempools.xml",
+      "url": "https://raw.githubusercontent.com/2o181o28/eden-seed-finder/master/item_data/itempools_rep.xml",
+      "sha256": "da5391ba59626b0fe349fa6d143df82cd7c19c648f04311d8e21a441d5aa502c"
+    },
+    {
+      "file": "data/raw/names_zh.lua",
+      "url": "https://raw.githubusercontent.com/wofsauge/External-Item-Descriptions/master/descriptions/names/zh_cn.lua",
+      "sha256": "021ddad613e3f6736b18c15f7d24f03929b2919300adbe8c0fd806b25d5321f5"
+    },
+    {
+      "file": "data/raw/descriptions_zh.lua",
+      "url": "https://raw.githubusercontent.com/wofsauge/External-Item-Descriptions/master/descriptions/rep/zh_cn.lua",
+      "sha256": "70c73e1ad2ace7f7c9fc2c0bb1f205377b2289f6bdaae0cafbb82de203a8b913"
+    },
+    {
+      "file": "data/raw/descriptions_base_zh.lua",
+      "url": "https://raw.githubusercontent.com/wofsauge/External-Item-Descriptions/master/descriptions/ab%2B/zh_cn.lua",
+      "sha256": "6e107fc2005bb3ba508626107ae84465308bc4f0f5b4f933d34477bec3f5b9d2"
+    },
+    {
+      "file": "data/raw/community_items.json",
+      "url": "https://raw.githubusercontent.com/Swashua/Bindings-of-Isaac-Cheat-Sheet/main/data/items.json",
+      "sha256": "66dad9614afad4fcdc5abf166b8d1b4f2f57d8a7e7eba7bb0ed3379aa486473c"
+    }
+  ],
+  "icons": {
+    "url": "https://github.com/Swashua/Bindings-of-Isaac-Cheat-Sheet/tree/main/public/images/items",
+    "count": 720
+  }
+}

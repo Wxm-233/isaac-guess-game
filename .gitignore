@@ -1,0 +1,41 @@
+# Node.js 依赖与本地缓存
+node_modules/
+.npm/
+.pnpm-store/
+.cache/
+
+# Python 缓存与虚拟环境
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# 本地环境变量（保留配置示例）
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.template
+
+# 日志与测试产物
+*.log
+coverage/
+test-results/
+playwright-report/
+blob-report/
+
+# 编辑器与操作系统文件
+.idea/
+.vscode/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# 本机工具配置
+.codex/
+.agents/
+.aws/
+
+# public/、data/ 和 .github/ 是运行、题库维护及部署所需文件，保留跟踪。
