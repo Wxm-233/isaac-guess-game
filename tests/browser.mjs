@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { mkdir, readFile } from 'node:fs/promises';
 const dataset=JSON.parse(await readFile(new URL('../public/data/items.json',import.meta.url),'utf8'));
 const {chromium}=await import(process.env.PLAYWRIGHT_MODULE || 'playwright');
-const browser=await chromium.launch({headless:true});
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROMIUM_PATH});
 const errors=[];
 const base=process.env.DEMO_URL||'http://127.0.0.1:5173';
 const shots=process.env.SCREENSHOT_DIR||'/tmp/isaac-demo-screenshots';
@@ -17,6 +17,32 @@ async function setup(viewport={width:1440,height:1000},saved={round:{version:dat
 }
 async function guess(page,query){await page.locator('#guess-input').fill(query);await page.locator('[role=option]').first().waitFor();await page.locator('#guess-input').press('Enter');}
 try{
+ // Check actual content bounds, including long pool names and the suggestion menu.
+ for(const width of [320,390,550,760,850,1024,1280,1440,1920]){
+  const layout=await setup({width,height:1000},{round:{version:dataset.version,targetId:105,guesses:[1,33,42],revealed:false,counted:false},stats:{played:0,won:0,best:null}});
+  const field=layout.page.locator('#guess-input');
+  await field.fill('妈妈');
+  const metrics=await layout.page.evaluate(()=>{
+   const table=document.querySelector('.table-scroll');
+   const row=document.querySelector('#guess-rows tr');
+   const cells=[...row.querySelectorAll('td')].map(el=>el.getBoundingClientRect());
+   const menu=document.querySelector('#suggestions').getBoundingClientRect();
+   return {page:document.documentElement.scrollWidth,viewport:innerWidth,table:table.scrollWidth,tableWidth:table.clientWidth,inputFont:parseFloat(getComputedStyle(document.querySelector('#guess-input')).fontSize),menuLeft:menu.left,menuRight:menu.right,card:getComputedStyle(row).display,labels:[...row.querySelectorAll('.feedback-label')].map(el=>el.textContent),nameY:cells[0].top,poolsY:cells[3].top,qualityY:cells[1].top,main:document.querySelector('main').getBoundingClientRect().width};
+  });
+  assert.ok(metrics.page<=width,`${width}px page overflows`);
+  assert.ok(metrics.table<=metrics.tableWidth+1,`${width}px results require horizontal scrolling`);
+  assert.ok(metrics.inputFont>=16,`${width}px input text is too small`);
+  assert.ok(metrics.menuLeft>=0&&metrics.menuRight<=width,`${width}px suggestions overflow`);
+  if(width<=760){
+   assert.equal(metrics.card,'grid');
+   assert.deepEqual(metrics.labels,['品质','类型','道具池','标签','充能','需解锁']);
+   assert.ok(metrics.nameY<metrics.qualityY&&metrics.qualityY<metrics.poolsY);
+  }
+  if(width===1920)assert.ok(metrics.main>=1800,'desktop content should use most of the viewport');
+  await field.press('Escape');await field.blur();
+  if([390,1920].includes(width))await layout.page.screenshot({path:`${shots}/layout-${width}.png`,fullPage:true,animations:'disabled'});
+  await layout.context.close();
+ }
  const previous={round:{version:'repentance-1.7.9b-demo-1',targetId:105,guesses:[1,2],revealed:false,counted:false},stats:{played:7,won:4,best:2}};
  const migration=await setup(undefined,previous);
  const migrated=await migration.page.evaluate(()=>JSON.parse(localStorage.getItem('isaac-guess-demo-v1')));

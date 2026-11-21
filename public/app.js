@@ -61,12 +61,12 @@ function finish() {
   if (roundStatus(state)==='won') { stats.won++; stats.best = stats.best == null ? state.guesses.length : Math.min(stats.best,state.guesses.length); }
   state.counted = true;
 }
-function feedbackCell(value, feedback) {
+function feedbackCell(value, feedback, heading) {
   const level = typeof feedback === 'string' ? feedback : feedback.level;
   const direction = typeof feedback === 'string' ? '' : feedback.direction;
   const label = {correct:'完全匹配',close:'部分匹配或接近',wrong:'不匹配'}[level];
   const mark = {correct:'✓',close:'≈',wrong:'×'}[level];
-  return `<td><div class="feedback ${level}" title="${label}${direction ? direction==='↑' ? '，目标更高' : '，目标更低' : ''}"><span class="cell-values">${escape(value)}</span><span class="${direction?'direction':'cell-symbol'}" aria-label="${label}">${direction||mark}</span></div></td>`;
+  return `<td><div class="feedback ${level}" title="${label}${direction ? direction==='↑' ? '，目标更高' : '，目标更低' : ''}"><span class="feedback-label" aria-hidden="true">${escape(heading)}</span><span class="cell-values">${escape(value)}</span><span class="${direction?'direction':'cell-symbol'}" aria-label="${label}">${direction||mark}</span></div></td>`;
 }
 function render() {
   const status = roundStatus(state), over = status !== 'playing';
@@ -80,7 +80,7 @@ function render() {
   const target = byId.get(state.targetId);
   $('#guess-rows').innerHTML = state.guesses.map((id,index)=>{
     const item = byId.get(id), f = compare(item,target);
-    return `<tr class="${index===state.guesses.length-1?'latest ':''}${f.correct?'win':''}"><td><div class="item-identity">${image(item)}<div><strong>${escape(item.name)}</strong><small class="${f.adjacent?'adjacent':''}">${f.correct ? '✓ 就是它' : f.adjacent ? 'ID 相邻 · 仅差 1' : `第 ${index+1} 次猜测`}</small></div></div></td>${feedbackCell(`${item.quality} 级`,f.quality)}${feedbackCell(TYPE_LABELS[item.type],f.type)}${feedbackCell(item.pools.join(' · ')||'无常规道具池',f.pools)}${feedbackCell(item.tags.join(' · ')||'无所列标签',f.tags)}${feedbackCell(chargeLabel(item.charge),f.charge)}${feedbackCell(item.unlock?'是':'否',f.unlock)}</tr>`;
+    return `<tr class="${index===state.guesses.length-1?'latest ':''}${f.correct?'win':''}"><td><div class="item-identity">${image(item)}<div><strong>${escape(item.name)}</strong><small class="${f.adjacent?'adjacent':''}">${f.correct ? '✓ 就是它' : f.adjacent ? 'ID 相邻 · 仅差 1' : `第 ${index+1} 次猜测`}</small></div></div></td>${feedbackCell(`${item.quality} 级`,f.quality,'品质')}${feedbackCell(TYPE_LABELS[item.type],f.type,'类型')}${feedbackCell(item.pools.join(' · ')||'无常规道具池',f.pools,'道具池')}${feedbackCell(item.tags.join(' · ')||'无所列标签',f.tags,'标签')}${feedbackCell(chargeLabel(item.charge),f.charge,'充能')}${feedbackCell(item.unlock?'是':'否',f.unlock,'需解锁')}</tr>`;
   }).join('');
   $('#result').hidden=!over;
   if(over) renderResult(target,status);
