@@ -59,13 +59,21 @@
       "retrievedDate": "2026-11-18",
       "sha256": "de365adcc1c442701c0dc495874f182b81f910c37a60b6f9785955fdc833c2ca",
       "sha256NormalizedLF": "11cfcdcfea278920d502179c388fa5ba3dd4b508b3b15ca77be75ee6810c7e02"
+    },
+    {
+      "file": "data/raw/achievements.json",
+      "url": "https://raw.githubusercontent.com/reiassezbeau/isaac-completion-tracker/26643549ba1560940b31535f45f54931fa2aee63/src-tauri/resources/achievements.json",
+      "retrievedDate": "2026-11-21",
+      "usage": "Achievement condition text joined with the game XML achievement ID; exact character suffix matching, not upstream inferred character fields.",
+      "sha256": "0fc5cae46b6d28d641557e9ab3138617b9ac619bbfeeb8f0e7dd9d62bd3f97ce",
+      "sha256NormalizedLF": "0fc5cae46b6d28d641557e9ab3138617b9ac619bbfeeb8f0e7dd9d62bd3f97ce"
     }
   ],
   "icons": {
     "url": "https://github.com/Swashua/Bindings-of-Isaac-Cheat-Sheet/tree/main/public/images/items",
     "count": 720
   },
-  "updatedDate": "2026-11-18",
+  "updatedDate": "2026-11-21",
   "gameResources": {
     "version": "1.9.7.17.J460",
     "versionEvidence": "Installed game log startup version",

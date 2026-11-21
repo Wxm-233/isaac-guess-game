@@ -8,6 +8,24 @@ export function compareSet(guess, target) {
   return [...a].some(v => b.has(v)) ? 'close' : 'wrong';
 }
 
+export function compareSetMembers(guess, target) {
+  const targetSet = new Set(target);
+  return { level:compareSet(guess,target), entries:[...new Set(guess)].map(value=>({value,level:targetSet.has(value)?'correct':'wrong'})) };
+}
+
+export function compareUnlock(guess, target) {
+  if (guess.kind !== target.kind) return 'wrong';
+  if (guess.kind !== 'character') return 'correct';
+  if (guess.character !== target.character) return 'wrong';
+  return guess.tainted === target.tainted ? 'correct' : 'close';
+}
+
+export function unlockLabel(unlock) {
+  if (unlock.kind === 'none') return '不需要解锁';
+  if (unlock.kind === 'other') return '其他解锁条件';
+  return `${unlock.tainted?'里':'表'}·${unlock.name}`;
+}
+
 export function compareNumber(guess, target) {
   return { level: guess === target ? 'correct' : Math.abs(guess-target) === 1 ? 'close' : 'wrong', direction: guess === target ? '' : target > guess ? '↑' : '↓' };
 }
@@ -26,10 +44,10 @@ export function compare(guess, target) {
     adjacent: Math.abs(guess.id - target.id) === 1,
     quality: compareNumber(guess.quality, target.quality),
     type: guess.type === target.type ? 'correct' : guess.type !== 'active' && target.type !== 'active' ? 'close' : 'wrong',
-    pools: compareSet(guess.pools, target.pools),
-    tags: compareSet(guess.tags, target.tags),
+    pools: compareSetMembers(guess.pools, target.pools),
+    tags: compareSetMembers(guess.tags, target.tags),
     charge: compareCharge(guess.charge, target.charge),
-    unlock: guess.unlock === target.unlock ? 'correct' : 'wrong',
+    unlock: compareUnlock(guess.unlock, target.unlock),
   };
 }
 

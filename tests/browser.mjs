@@ -17,6 +17,29 @@ async function setup(viewport={width:1440,height:1000},saved={round:{version:dat
 }
 async function guess(page,query){await page.locator('#guess-input').fill(query);await page.locator('[role=option]').first().waitFor();await page.locator('#guess-input').press('Enter');}
 try{
+ for(const width of [390,1440]){
+  const clues=await setup({width,height:1000},{round:{version:dataset.version,targetId:114,guesses:[723,489,105,1,20],revealed:false,counted:false},stats:{played:0,won:0,best:null}});
+  const rows=clues.page.locator('#guess-rows tr');
+  const first=rows.nth(0);
+  assert.deepEqual(await first.locator('td:nth-child(4) .feedback-entry.correct>span:first-child').allTextContents(),['宝箱房']);
+  assert.deepEqual(await first.locator('td:nth-child(4) .feedback-entry.wrong>span:first-child').allTextContents(),['夹娃娃机','隐藏房']);
+  assert.deepEqual(await first.locator('td:nth-child(5) .feedback-entry.correct>span:first-child').allTextContents(),['攻击性']);
+  assert.equal(await first.locator('td:nth-child(5) .set-summary').innerText(),'还有未列出的项');
+  assert.equal(await first.locator('td:last-child .feedback.close .cell-values').innerText(),'里·以撒');
+  assert.equal(await rows.nth(1).locator('td:last-child .feedback.correct .cell-values').innerText(),'表·以撒');
+  assert.equal(await rows.nth(2).locator('td:last-child .feedback.wrong .cell-values').innerText(),'表·???');
+  assert.equal(await rows.nth(3).locator('td:last-child .cell-values').innerText(),'不需要解锁');
+  assert.equal(await rows.nth(4).locator('td:last-child .cell-values').innerText(),'其他解锁条件');
+  assert.ok(await clues.page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));
+  await clues.page.screenshot({path:`${shots}/clues-${width}.png`,fullPage:true,animations:'disabled'});
+  await clues.page.locator('#give-up').click();await clues.page.locator('#confirm-action').click();
+  await clues.page.evaluate(()=>Object.defineProperty(navigator,'clipboard',{configurable:true,value:{writeText:async text=>{window.sharedResult=text;}}}));
+  await clues.page.locator('#share-result').click();
+  const shared=await clues.page.evaluate(()=>window.sharedResult);
+  assert.equal(shared.split('\n').length,6);
+  assert.ok(shared.split('\n').slice(1).every(line=>Array.from(line).length===6&&/^[🟩🟨⬜]+$/u.test(line)));
+  await clues.context.close();
+ }
  // Check actual content bounds, including long pool names and the suggestion menu.
  for(const width of [320,390,550,760,850,1024,1280,1440,1920]){
   const layout=await setup({width,height:1000},{round:{version:dataset.version,targetId:105,guesses:[1,33,42],revealed:false,counted:false},stats:{played:0,won:0,best:null}});
@@ -35,7 +58,7 @@ try{
   assert.ok(metrics.menuLeft>=0&&metrics.menuRight<=width,`${width}px suggestions overflow`);
   if(width<=760){
    assert.equal(metrics.card,'grid');
-   assert.deepEqual(metrics.labels,['品质','类型','道具池','标签','充能','需解锁']);
+   assert.deepEqual(metrics.labels,['品质','类型','道具池','标签','充能','解锁方式']);
    assert.ok(metrics.nameY<metrics.qualityY&&metrics.qualityY<metrics.poolsY);
   }
   if(width===1920)assert.ok(metrics.main>=1800,'desktop content should use most of the viewport');
@@ -43,7 +66,7 @@ try{
   if([390,1920].includes(width))await layout.page.screenshot({path:`${shots}/layout-${width}.png`,fullPage:true,animations:'disabled'});
   await layout.context.close();
  }
- const previous={round:{version:'repentance-1.7.9b-demo-1',targetId:105,guesses:[1,2],revealed:false,counted:false},stats:{played:7,won:4,best:2}};
+ const previous={round:{version:'repentance-plus-1.9.7.17-demo-1',targetId:105,guesses:[1,2],revealed:false,counted:false},stats:{played:7,won:4,best:2}};
  const migration=await setup(undefined,previous);
  const migrated=await migration.page.evaluate(()=>JSON.parse(localStorage.getItem('isaac-guess-demo-v1')));
  assert.equal(migrated.round.version,dataset.version);

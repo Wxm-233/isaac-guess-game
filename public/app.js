@@ -1,4 +1,4 @@
-import { MAX_GUESSES, TYPE_LABELS, compare, chargeLabel, searchItems, roundStatus, submitGuess, restoreRound } from './game.js';
+import { MAX_GUESSES, TYPE_LABELS, compare, chargeLabel, unlockLabel, searchItems, roundStatus, submitGuess, restoreRound } from './game.js';
 
 const $ = s => document.querySelector(s);
 const KEY = 'isaac-guess-demo-v1';
@@ -68,6 +68,11 @@ function feedbackCell(value, feedback, heading) {
   const mark = {correct:'✓',close:'≈',wrong:'×'}[level];
   return `<td><div class="feedback ${level}" title="${label}${direction ? direction==='↑' ? '，目标更高' : '，目标更低' : ''}"><span class="feedback-label" aria-hidden="true">${escape(heading)}</span><span class="cell-values">${escape(value)}</span><span class="${direction?'direction':'cell-symbol'}" aria-label="${label}">${direction||mark}</span></div></td>`;
 }
+function feedbackSet(feedback, heading, emptyLabel) {
+  if (!feedback.entries.length) return feedbackCell(emptyLabel,feedback.level,heading);
+  const summary = feedback.level === 'correct' ? '完全匹配' : feedback.level === 'wrong' ? '无匹配项' : feedback.entries.every(x=>x.level==='correct') ? '还有未列出的项' : '部分匹配';
+  return `<td><div class="feedback set-feedback"><span class="feedback-label" aria-hidden="true">${escape(heading)}</span><div class="feedback-entries">${feedback.entries.map(({value,level})=>`<span class="feedback-entry ${level}" title="${level==='correct'?'答案也有这一项':'答案没有这一项'}"><span>${escape(value)}</span><span aria-label="${level==='correct'?'匹配':'不匹配'}">${level==='correct'?'✓':'×'}</span></span>`).join('')}</div><span class="set-summary">${summary}</span></div></td>`;
+}
 function render() {
   const status = roundStatus(state), over = status !== 'playing';
   const remaining = MAX_GUESSES - state.guesses.length;
@@ -80,7 +85,7 @@ function render() {
   const target = byId.get(state.targetId);
   $('#guess-rows').innerHTML = state.guesses.map((id,index)=>{
     const item = byId.get(id), f = compare(item,target);
-    return `<tr class="${index===state.guesses.length-1?'latest ':''}${f.correct?'win':''}"><td><div class="item-identity">${image(item)}<div><strong>${escape(item.name)}</strong><small class="${f.adjacent?'adjacent':''}">${f.correct ? '✓ 就是它' : f.adjacent ? 'ID 相邻 · 仅差 1' : `第 ${index+1} 次猜测`}</small></div></div></td>${feedbackCell(`${item.quality} 级`,f.quality,'品质')}${feedbackCell(TYPE_LABELS[item.type],f.type,'类型')}${feedbackCell(item.pools.join(' · ')||'无常规道具池',f.pools,'道具池')}${feedbackCell(item.tags.join(' · ')||'无所列标签',f.tags,'标签')}${feedbackCell(chargeLabel(item.charge),f.charge,'充能')}${feedbackCell(item.unlock?'是':'否',f.unlock,'需解锁')}</tr>`;
+    return `<tr class="${index===state.guesses.length-1?'latest ':''}${f.correct?'win':''}"><td><div class="item-identity">${image(item)}<div><strong>${escape(item.name)}</strong><small class="${f.adjacent?'adjacent':''}">${f.correct ? '✓ 就是它' : f.adjacent ? 'ID 相邻 · 仅差 1' : `第 ${index+1} 次猜测`}</small></div></div></td>${feedbackCell(`${item.quality} 级`,f.quality,'品质')}${feedbackCell(TYPE_LABELS[item.type],f.type,'类型')}${feedbackSet(f.pools,'道具池','无常规道具池')}${feedbackSet(f.tags,'标签','无所列标签')}${feedbackCell(chargeLabel(item.charge),f.charge,'充能')}${feedbackCell(unlockLabel(item.unlock),f.unlock,'解锁方式')}</tr>`;
   }).join('');
   $('#result').hidden=!over;
   if(over) renderResult(target,status);
@@ -97,7 +102,7 @@ function renderResult(item,status) {
 }
 async function share() {
   const target=byId.get(state.targetId), square={correct:'🟩',close:'🟨',wrong:'⬜'};
-  const text=`撒一把 · 单人练习 ${roundStatus(state)==='won'?state.guesses.length:'X'}/8\n${state.guesses.map(id=>{const f=compare(byId.get(id),target);return [f.quality.level,f.type,f.pools,f.tags,f.charge.level,f.unlock].map(x=>square[x]).join('');}).join('\n')}`;
+  const text=`撒一把 · 单人练习 ${roundStatus(state)==='won'?state.guesses.length:'X'}/8\n${state.guesses.map(id=>{const f=compare(byId.get(id),target);return [f.quality.level,f.type,f.pools.level,f.tags.level,f.charge.level,f.unlock].map(x=>square[x]).join('');}).join('\n')}`;
   try { await navigator.clipboard.writeText(text); $('#share-result').textContent='已复制 ✓'; }
   catch { openModal(`<h2>分享战绩</h2><p>复制下方文字即可分享，不会包含答案。</p><textarea aria-label="战绩文本" readonly style="width:100%;height:180px;padding:12px">${escape(text)}</textarea>`); $('#modal textarea').select(); }
 }
@@ -108,8 +113,8 @@ function confirmAction(title,body,label,action) {
 }
 $('#modal-close').onclick=()=>modal.close();
 modal.addEventListener('click',event=>{if(event.target===modal){const r=modal.getBoundingClientRect();if(event.clientX<r.left||event.clientX>r.right||event.clientY<r.top||event.clientY>r.bottom)modal.close();}});
-$('#rules-button').onclick=()=>openModal(`<h2>怎么撒一把？</h2><p>每局随机抽取一件道具。你有 8 次机会，每次提交后会显示你猜的道具属性，并与答案比较。猜中道具本身即获胜。</p><ul><li><strong>品质：</strong>相同为绿，相差 1 为黄；箭头始终指向答案的方向。</li><li><strong>类型：</strong>主动、被动、跟班。跟班属于被动的细分，两者之间显示黄色。</li><li><strong>道具池 / 标签：</strong>集合完全相同为绿，有交集为黄，没有交集为灰。双方都没有所列属性时为绿。道具池采用普通模式。</li><li><strong>充能：</strong>分普通格数、计时和特殊机制；只有机制相同才比较数值。计时相差 1 帧为黄，其他不相等为灰。两件被动都显示“不适用”，判为绿。特殊机制只比较类别。</li><li><strong>需解锁：</strong>是否关联解锁成就。</li><li><strong>ID 彩蛋：</strong>猜测与答案的 ID 恰好相差 1 时提示，不提示 ID 大小。</li></ul><p>颜色匹配只是线索；不同道具可能有相同属性。搜索支持中文、常用俗称、英文、拼音、拼音首字母和 ID。↑↓ 选择候选，Enter 提交，Esc 收起。</p>`);
-$('#about-button').onclick=()=>openModal(`<h2>题库与来源</h2><p>本地单人 Demo · ${data?.items.length ?? "—"} 件图鉴道具。属性按${escape(data?.gameVersion ?? "忏悔+")}配置整理，排除隐藏道具；普通模式道具池。标签展示常见主题标签，共 18 类，不包含内部机制标签。</p><ul><li>游戏配置快照：从忏悔+原版资源提取品质、类型、道具池、标签、充能及解锁状态。</li><li><a target="_blank" rel="noopener" href="https://github.com/wofsauge/External-Item-Descriptions">External Item Descriptions</a>：中文名称与效果说明，合并忏悔+版本修订；中文说明仅用于结束后的介绍。</li><li><a target="_blank" rel="noopener" href="https://github.com/Swashua/Bindings-of-Isaac-Cheat-Sheet">Bindings of Isaac Cheat Sheet</a>：道具图标。</li><li><a target="_blank" rel="noopener" href="https://github.com/shnlfriberg/csgofriberg">弗一把</a>：玩法参考，本 Demo 独立实现。</li></ul><p>常用俗称为 Demo 补充表，后续可合并 Wiki 索引。道具图像属于原游戏权利人。游戏进度与战绩仅保存在此浏览器。</p>`);
+$('#rules-button').onclick=()=>openModal(`<h2>怎么撒一把？</h2><p>每局随机抽取一件道具。你有 8 次机会，每次提交后会显示你猜的道具属性，并与答案比较。猜中道具本身即获胜。</p><ul><li><strong>品质：</strong>相同为绿，相差 1 为黄；箭头始终指向答案的方向。</li><li><strong>类型：</strong>主动、被动、跟班。跟班属于被动的细分，两者之间显示黄色。</li><li><strong>道具池 / 标签：</strong>每一项单独判定：绿色 ✓ 表示答案也有这一项，灰色 × 表示答案没有。只显示所猜道具的条目；全部条目正确但尚未列全时会提示。双方都没有所列属性时为绿。道具池采用普通模式。</li><li><strong>充能：</strong>分普通格数、计时和特殊机制；只有机制相同才比较数值。计时相差 1 帧为黄，其他不相等为灰。两件被动都显示“不适用”，判为绿。特殊机制只比较类别。</li><li><strong>解锁方式：</strong>分为不需要解锁、指定角色解锁、其他解锁条件。同角色同表里为绿，同角色但表里不同为黄；不同角色或不同类别为灰。“其他解锁条件”之间按同类匹配。</li><li><strong>ID 彩蛋：</strong>猜测与答案的 ID 恰好相差 1 时提示，不提示 ID 大小。</li></ul><p>颜色匹配只是线索；不同道具可能有相同属性。搜索支持中文、常用俗称、英文、拼音、拼音首字母和 ID。↑↓ 选择候选，Enter 提交，Esc 收起。</p>`);
+$('#about-button').onclick=()=>openModal(`<h2>题库与来源</h2><p>本地单人 Demo · ${data?.items.length ?? "—"} 件图鉴道具。属性按${escape(data?.gameVersion ?? "忏悔+")}配置整理，排除隐藏道具；普通模式道具池。标签展示 19 类主题标签。</p><ul><li>游戏配置快照：从忏悔+原版资源提取品质、类型、道具池、标签、充能及关联成就。解锁角色由成就条件快照整理。</li><li><a target="_blank" rel="noopener" href="https://github.com/reiassezbeau/isaac-completion-tracker">Isaac Completion Tracker</a>：成就条件快照，用于解锁角色分类。</li><li><a target="_blank" rel="noopener" href="https://github.com/wofsauge/External-Item-Descriptions">External Item Descriptions</a>：中文名称与效果说明，合并忏悔+版本修订；中文说明仅用于结束后的介绍。</li><li><a target="_blank" rel="noopener" href="https://github.com/Swashua/Bindings-of-Isaac-Cheat-Sheet">Bindings of Isaac Cheat Sheet</a>：道具图标。</li><li><a target="_blank" rel="noopener" href="https://github.com/shnlfriberg/csgofriberg">弗一把</a>：玩法参考，本 Demo 独立实现。</li></ul><p>常用俗称为 Demo 补充表，后续可合并 Wiki 索引。道具图像属于原游戏权利人。游戏进度与战绩仅保存在此浏览器。</p>`);
 $('#give-up').onclick=()=>confirmAction('要揭晓答案吗？','揭晓后本局会结束，并计入未猜中的战绩。','揭晓答案',()=>{state.revealed=true;finish();save();render();message('答案已揭晓。');$('#result').scrollIntoView({block:'nearest',behavior:'smooth'});});
 $('#restart').onclick=()=>{if(roundStatus(state)==='playing'&&state.guesses.length)confirmAction('换一件道具？','当前猜测进度会清空。这一局不会计入战绩。','换一局',newRound);else newRound();};
 input.addEventListener('input',()=>{if(!composing){message('');showMatches();}});

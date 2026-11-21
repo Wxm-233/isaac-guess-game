@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { createHash } from 'node:crypto';
-import { compare,compareSet,compareCharge,chargeLabel,searchItems,submitGuess,roundStatus,restoreRound } from '../public/game.js';
+import { compare,compareSet,compareSetMembers,compareUnlock,unlockLabel,compareCharge,chargeLabel,searchItems,submitGuess,roundStatus,restoreRound } from '../public/game.js';
 
 const data=JSON.parse(readFileSync(new URL('../public/data/items.json',import.meta.url)));
 const items=data.items, byId=new Map(items.map(x=>[x.id,x]));
@@ -41,9 +41,37 @@ test('717 unique non-hidden collectibles, every item has complete local resource
   assert.ok(existsSync(new URL(`../public${x.image}`,import.meta.url)),`missing image ${x.id}`);
   assert.ok(['active','passive','familiar'].includes(x.type));
   assert.equal(x.charge!==null,x.type==='active');
-  assert.equal(typeof x.unlock,'boolean');
+  assert.ok(['none','character','other'].includes(x.unlock.kind));
+  if(x.unlock.kind==='character'){
+   assert.ok(x.unlock.character&&x.unlock.name);
+   assert.equal(typeof x.unlock.tainted,'boolean');
+  }
+  assert.equal(x.unlock.achievement===null,x.unlock.kind==='none');
  }
  for(const id of [59,656,714,715])assert.ok(!byId.has(id));
+});
+test('offensive comes from the game tag; unlocks distinguish characters, variants and other conditions',()=>{
+ assert.equal(items.filter(x=>x.tags.includes('攻击性')).length,546);
+ assert.ok(byId.get(1).tags.includes('攻击性'));
+ assert.ok(!byId.get(422).tags.includes('攻击性'));
+ assert.equal(unlockLabel(byId.get(114).unlock),'表·以撒');
+ assert.equal(unlockLabel(byId.get(723).unlock),'里·以撒');
+ assert.equal(unlockLabel(byId.get(105).unlock),'表·???'); // Isaac is the boss, not the required character.
+ for(const [a,b,level] of [[114,489,'correct'],[114,723,'close'],[723,114,'close'],[114,105,'wrong'],[619,722,'close'],[541,729,'close'],[331,727,'close'],[20,35,'correct'],[1,2,'correct'],[1,20,'wrong'],[20,114,'wrong']]){
+  assert.equal(compareUnlock(byId.get(a).unlock,byId.get(b).unlock),level,`${a} vs ${b}`);
+ }
+ for(const id of [441,625,628,537,263])assert.equal(byId.get(id).unlock.kind,'other',`all-character, generic-Isaac and challenge conditions: ${id}`);
+ assert.equal(byId.get(404).unlock.character,'isaac');
+ assert.equal(byId.get(643).unlock.character,'bethany');
+ assert.equal(byId.get(258).unlock.character,'lazarus');
+});
+test('each guessed set member is marked independently without revealing missing target members',()=>{
+ assert.deepEqual(compareSetMembers(['宝箱房','商店','宝箱房'],['宝箱房','天使房']),{level:'close',entries:[{value:'宝箱房',level:'correct'},{value:'商店',level:'wrong'}]});
+ assert.deepEqual(compareSetMembers(['攻击性'],['攻击性','书本']),{level:'close',entries:[{value:'攻击性',level:'correct'}]});
+ assert.deepEqual(compareSetMembers([],[]),{level:'correct',entries:[]});
+ assert.deepEqual(compareSetMembers([],['攻击性']),{level:'wrong',entries:[]});
+ assert.deepEqual(compareSetMembers(['书本'],[]),{level:'wrong',entries:[{value:'书本',level:'wrong'}]});
+ assert.equal(compareSetMembers(['书本','攻击性'],['攻击性','书本']).level,'correct');
 });
 test('set matching handles overlap, no overlap, order, duplicates and empty sets',()=>{
  assert.equal(compareSet(['a','b'],['b','a']),'correct');

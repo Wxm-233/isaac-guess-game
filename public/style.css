@@ -67,3 +67,17 @@ html{font-size:100%}
   .empty-state p{font-size:.8125rem}
   .starter{font-size:.75rem}
 }
+
+/* Multi-value clues keep each member's match visible on desktop and mobile. */
+.set-feedback{background:transparent;flex-direction:column;flex-wrap:nowrap;gap:.375rem}
+.feedback-entries{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:.25rem;width:100%;min-width:0}
+.feedback-entry{display:inline-flex;align-items:center;gap:.25rem;max-width:100%;border-radius:.25rem;padding:.25rem .375rem;line-height:1.5;overflow-wrap:anywhere}
+.feedback-entry.correct{background:var(--green-light);color:#52683b}
+.feedback-entry.wrong{background:var(--gray);color:#78725f}
+.feedback-entry>span:last-child{flex-shrink:0;font-size:.75em}
+.set-summary{font-size:.625rem;color:var(--muted);line-height:1.5}
+@media(max-width:760px){
+  .set-feedback{padding:.375rem 0}
+  .set-feedback .feedback-label{color:var(--ink)}
+  .set-summary{font-size:.6875rem}
+}
